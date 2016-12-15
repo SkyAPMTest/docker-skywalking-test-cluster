@@ -1,0 +1,53 @@
+version: '2'
+services:
+  cache-server:
+    image: skywalking/test-cache-server:1.0.0
+    depends_on:
+      - redis-server
+    links:
+      - redis-server
+    expose:
+      - "8002"
+
+  persistence-server:
+    image: skywalking/test-persistence-server:1.0.0
+    depends_on:
+      - zookeeper-server
+      - mysql-server
+    links:
+      - zookeeper-server
+      - mysql-server
+    expose:
+      - "20880"
+
+  portal-server:
+    image: skywalking/test-portal:1.0.0
+    depends_on:
+      - cache-server
+      - persistence-server
+    links:
+      - cache-server
+      - persistence-server
+    ports:
+      - "8080:8080"
+
+  mysql-server:
+    image: mysql:5.6
+    expose:
+      - "3306"
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: root
+      STARTUP_SQL:
+
+  # zookeeper server
+  zookeeper-server:
+    image: zookeeper:3.4.9
+    expose:
+      - "2181"
+
+  redis-server:
+    image: redis:3.2.6
+    expose:
+      - "6379"
+
