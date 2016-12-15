@@ -7,5 +7,5 @@
 
     <bean id="cacheService" class="com.a.eye.skywalking.test.cache.CacheServiceImpl"/>
     <motan:service interface="com.a.eye.skywalking.test.cache.CacheService" ref="cacheService"
-                   export="8002" timeout="5000"/>
+                   export="8002" requestTimeout="10000"/>
 </beans>

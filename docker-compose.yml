@@ -4,10 +4,19 @@ services:
     image: skywalking/test-cache-server:1.0.0
     depends_on:
       - redis-server
+      - zookeeper-server
     links:
       - redis-server
     expose:
       - "8002"
+      - "8000"
+    ports:
+      - "28000:8000"
+    environment:
+      - SERVER_LIST=10.0.0.1:23000
+      - APPLICATION_CODE=cache-server
+    volumes:
+      - /Users/xin/workbench/sky-walking/agent:/usr/local/skywalking/agent
 
   persistence-server:
     image: skywalking/test-persistence-server:1.0.0
@@ -19,6 +28,14 @@ services:
       - mysql-server
     expose:
       - "20880"
+      - "8000"
+    ports:
+      - "18000:8000"
+    environment:
+      - SERVER_LIST=10.0.0.1:23000
+      - APPLICATION_CODE=persistence-server
+    volumes:
+      - /Users/xin/workbench/sky-walking/agent:/usr/local/skywalking/agent
 
   portal-server:
     image: skywalking/test-portal:1.0.0
@@ -30,6 +47,12 @@ services:
       - persistence-server
     ports:
       - "8080:8080"
+      - "8000:8000"
+    environment:
+      - SERVER_LIST=10.0.0.1:23000
+      - APPLICATION_CODE=portal-server
+    volumes:
+      - /Users/xin/workbench/sky-walking/agent:/usr/local/skywalking/agent
 
   mysql-server:
     image: mysql:5.6
@@ -38,7 +61,6 @@ services:
     environment:
       MYSQL_DATABASE: test
       MYSQL_ROOT_PASSWORD: root
-      STARTUP_SQL:
 
   # zookeeper server
   zookeeper-server:

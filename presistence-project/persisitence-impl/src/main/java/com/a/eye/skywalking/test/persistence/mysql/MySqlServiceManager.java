@@ -38,7 +38,7 @@ public class MySqlServiceManager {
     private static final String DELETE_DATA_SQL = "DELETE FROM `test`.`CACHE_TABLE`\n" +
             "WHERE id = '1';";
 
-    private static final String INSERT_DATA_SQL = "INSERT INTO `test`.`CACHE_TABLE` (`id`, `CACHE_KEY`, `CACHE_VALUE`) VALUES (1, \"test\", \"test\");";
+    private static final String INSERT_DATA_SQL = "INSERT INTO `test`.`CACHE_TABLE` (`id`, `CACHE_KEY`, `CACHE_VALUE`) VALUES (1, \"cacheKey1\", \"cacheValue1\");";
 
     public CacheItem find(String key) {
         initSchemaAndDataIfNecessary();
@@ -64,7 +64,9 @@ public class MySqlServiceManager {
         param.put("table_schema", TABLE_SCHEMA);
         param.put("table_name", TABLE_NAME);
         List<Map<String, Object>> table = namedParameterJdbcTemplate.queryForList(TABLE_CHECK_SQL, param);
+        logger.info("table is {}.", table== null || table.size() == 0 ? "exists":"not exists");
         if (table == null || table.size() == 0) {
+            logger.info("Create tables.......");
             createTable();
             initData();
         }

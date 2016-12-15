@@ -6,6 +6,7 @@ import com.a.eye.skywalking.test.persistence.PersistenceService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,8 +23,8 @@ public class SearchCacheController {
     @Autowired
     private PersistenceService persistenceService;
 
-    @RequestMapping(value = "/{key:.+}")
-    public ModelAndView search(String key) {
+    @RequestMapping(value = "/{key}")
+    public ModelAndView search(@PathVariable String key) {
         String cacheValue = cacheService.findCache(key);
         if (cacheValue == null || cacheValue.length() == 0) {
             CacheItem cacheItem = persistenceService.query("test");

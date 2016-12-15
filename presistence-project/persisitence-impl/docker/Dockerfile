@@ -4,14 +4,15 @@ ENV USER_NAME=test \
     APPLICATION_CODE=test \
     SERVER_LIST=127.0.0.1:34000
 
-RUN mkdir -p /etc/skywalking/agent && mkdir -p /etc/skywalking/persistence-server/libs
+RUN mkdir -p /usr/local/skywalking/agent && mkdir -p /usr/local/skywalking/persistence-server/libs
 
-COPY persistence-server.jar /etc/skywalking/persistence-server
-ADD libs /etc/skywalking/persistence-server/libs
-COPY persistence-start.sh /etc/skywalking/persistence-server
-RUN chmod +x /etc/skywalking/persistence-server/persistence-start.sh
+COPY persistence-server.jar /usr/local/skywalking/persistence-server
+ADD libs /usr/local/skywalking/persistence-server/libs
+COPY persistence-start.sh /usr/local/skywalking/persistence-server
+RUN chmod +x /usr/local/skywalking/persistence-server/persistence-start.sh
 
-VOLUME /etc/skywalking/agent
+VOLUME /usr/local/skywalking/agent
 
-WORKDIR /etc/skywalking/persistence-server
-CMD ["/etc/skywalking/persistence-server/persistence-start.sh"]
+EXPOSE 8000
+
+CMD ["/usr/local/skywalking/persistence-server/persistence-start.sh"]

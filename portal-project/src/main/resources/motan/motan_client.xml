@@ -6,5 +6,5 @@
    http://api.weibo.com/schema/motan http://api.weibo.com/schema/motan.xsd">
 
     <motan:referer id="cacheService" interface="com.a.eye.skywalking.test.cache.CacheService"
-                   directUrl="cache-server:8002"/>
+                   directUrl="cache-server:8002" requestTimeout="10000" />
 </beans>
