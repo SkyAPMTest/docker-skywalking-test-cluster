@@ -3,6 +3,7 @@ package com.a.eye.skywalking.test;
 import com.a.eye.skywalking.test.cache.CacheService;
 import com.a.eye.skywalking.test.persistence.CacheItem;
 import com.a.eye.skywalking.test.persistence.PersistenceService;
+import com.a.eye.skywalking.toolkit.trace.TraceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,7 @@ public class SearchCacheController {
         cacheService.updateCache(key, cacheValue);
         ModelAndView modelAndView = new ModelAndView("resultPage");
         modelAndView.addObject("cacheValue", cacheValue);
+        modelAndView.addObject("traceId", TraceContext.traceId());
         return modelAndView;
     }
 }

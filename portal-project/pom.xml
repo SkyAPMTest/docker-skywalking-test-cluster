@@ -19,6 +19,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.a.eye</groupId>
+            <artifactId>skywalking-toolkit-trace-context</artifactId>
+            <version>${skywalking.version}</version>
+        </dependency>
         <!-- API -->
         <dependency>
             <groupId>com.a.eye</groupId>

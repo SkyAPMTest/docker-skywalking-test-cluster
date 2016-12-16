@@ -22,7 +22,7 @@
         <dubbox.version>2.8.4</dubbox.version>
         <jedis.version>3.6.5</jedis.version>
         <spring.version>4.3.2.RELEASE</spring.version>
-        <log.activation.version>2.0-2016</log.activation.version>
+        <skywalking.version>2.0-2016</skywalking.version>
         <docker.plugin.version>0.4.13</docker.plugin.version>
         <source.compiler.level>1.8</source.compiler.level>
         <target.compiler.level>1.8</target.compiler.level>
@@ -49,12 +49,12 @@
         <dependency>
             <groupId>com.a.eye</groupId>
             <artifactId>skywalking-toolkit-log4j-1.x</artifactId>
-            <version>${log.activation.version}</version>
+            <version>${skywalking.version}</version>
         </dependency>
         <dependency>
             <groupId>com.a.eye</groupId>
             <artifactId>skywalking-toolkit-log4j-2.x</artifactId>
-            <version>${log.activation.version}</version>
+            <version>${skywalking.version}</version>
         </dependency>
 
         <dependency>

@@ -11,6 +11,7 @@
     <title>Search Result Page</title>
 </head>
 <body>
+trace id : ${traceId}
 Cache value : ${cacheValue}
 </body>
 </html>
