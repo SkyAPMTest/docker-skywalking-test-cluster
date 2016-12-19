@@ -28,10 +28,10 @@ public class SearchCacheController {
     public ModelAndView search(@PathVariable String key) {
         String cacheValue = cacheService.findCache(key);
         if (cacheValue == null || cacheValue.length() == 0) {
-            CacheItem cacheItem = persistenceService.query("test");
+            CacheItem cacheItem = persistenceService.query(key);
             cacheValue = cacheItem.getCacheValue();
         }
-        cacheService.updateCache(key, cacheValue);
+        cacheService.updateCache(key + "_NEW", cacheValue);
         ModelAndView modelAndView = new ModelAndView("resultPage");
         modelAndView.addObject("cacheValue", cacheValue);
         modelAndView.addObject("traceId", TraceContext.traceId());
