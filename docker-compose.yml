@@ -11,9 +11,9 @@ services:
       - "8002"
       - "8000"
     ports:
-      - "28000:8000"
+      - "38000:8000"
     environment:
-      - SERVER_LIST=10.0.0.1:23000
+      - SERVER_LIST=192.168.1.6:23000
       - APPLICATION_CODE=cache-server
     volumes:
       - /Users/xin/workbench/sky-walking/agent:/usr/local/skywalking/agent
@@ -30,9 +30,9 @@ services:
       - "20880"
       - "8000"
     ports:
-      - "18000:8000"
+      - "28000:8000"
     environment:
-      - SERVER_LIST=10.0.0.1:23000
+      - SERVER_LIST=192.168.1.6:23000
       - APPLICATION_CODE=persistence-server
     volumes:
       - /Users/xin/workbench/sky-walking/agent:/usr/local/skywalking/agent
@@ -46,10 +46,10 @@ services:
       - cache-server
       - persistence-server
     ports:
-      - "8080:8080"
-      - "8000:8000"
+      - "18080:8080"
+      - "18000:8000"
     environment:
-      - SERVER_LIST=10.0.0.1:23000
+      - SERVER_LIST=192.168.1.6:23000
       - APPLICATION_CODE=portal-server
     volumes:
       - /Users/xin/workbench/sky-walking/agent:/usr/local/skywalking/agent
