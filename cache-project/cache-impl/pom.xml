@@ -61,6 +61,19 @@
             <version>1.4.193</version>
         </dependency>
 
+        <!-- open tracing -->
+        <dependency>
+            <groupId>io.opentracing</groupId>
+            <artifactId>opentracing-api</artifactId>
+            <version>${opentracing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentracing</groupId>
+            <artifactId>opentracing-noop</artifactId>
+            <version>${opentracing.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

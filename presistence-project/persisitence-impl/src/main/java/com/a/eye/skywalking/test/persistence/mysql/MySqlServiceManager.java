@@ -38,7 +38,7 @@ public class MySqlServiceManager {
     private static final String DELETE_DATA_SQL = "DELETE FROM `test`.`CACHE_TABLE`\n" +
             "WHERE id = '1';";
 
-    private static final String INSERT_DATA_SQL = "INSERT INTO `test`.`CACHE_TABLE` (`id`, `CACHE_KEY`, `CACHE_VALUE`) VALUES (1, \"cacheKey1\", \"cacheValue1\");";
+    private static final String INSERT_DATA_SQL = "INSERT INTO `test`.`CACHE_TABLE` (`id`, `CACHE_KEY`, `CACHE_VALUE`) VALUES (1, \"test\", \"test\");";
 
     public CacheItem find(String key) {
         initSchemaAndDataIfNecessary();
