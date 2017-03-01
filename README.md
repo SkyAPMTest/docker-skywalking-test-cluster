@@ -2,6 +2,7 @@
 A test application cluster, based on docker tech, for sky-walking tracer
 
 A Cluster contains applications:
+
 1. protal application, includes web container, motan-client, dubbox-client
 1. cache application, includes motan-server, redis-client, jdbc-h2
 1. persistence application, includes dubbox-server, mysql
